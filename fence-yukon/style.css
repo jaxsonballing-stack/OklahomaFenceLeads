@@ -1,0 +1,381 @@
+/* ============================================
+   OKC METRO FENCE — design tokens
+   Cedar posts, red-dirt clay, limestone caliche,
+   ironwork charcoal. Signage-inspired display type.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&family=Libre+Franklin:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  --cedar: #8B4A2B;
+  --clay: #AA4A2E;
+  --clay-dark: #863823;
+  --limestone: #EDE3CF;
+  --limestone-hi: #F6F0E1;
+  --iron: #2A2622;
+  --iron-soft: #423C34;
+  --prairie: #4E6B72;
+  --gold: #C79A3B;
+  --line: rgba(42,38,34,0.14);
+
+  --display: 'Staatliches', sans-serif;
+  --body: 'Libre Franklin', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  color: var(--iron);
+  background: var(--limestone-hi);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--display);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--iron);
+}
+
+h1 { font-size: clamp(2.6rem, 7vw, 5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+h3 { font-size: 1.3rem; letter-spacing: 0.03em; }
+
+p { margin: 0 0 1rem; }
+
+a { color: inherit; text-decoration: none; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clay);
+  font-weight: 600;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- header ---------- */
+.site-header {
+  background: var(--iron);
+  color: var(--limestone-hi);
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 3px solid var(--clay);
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  color: var(--limestone-hi);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.logo span {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.nav-links { display: flex; gap: 28px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.03em; }
+.nav-links a { opacity: 0.85; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+
+/* ---------- picket fence divider — signature element ---------- */
+.picket-divider {
+  height: 34px;
+  width: 100%;
+  background-repeat: repeat-x;
+  background-size: 28px 34px;
+  background-position: bottom;
+  background-image:
+    linear-gradient(var(--cedar), var(--cedar)),
+    linear-gradient(var(--cedar), var(--cedar));
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--cedar) 0px,
+    var(--cedar) 14px,
+    transparent 14px,
+    transparent 28px
+  );
+  clip-path: polygon(
+    0% 100%, 0% 40%, 3.5% 20%, 7% 40%, 7% 100%,
+    10.5% 100%, 10.5% 40%, 14% 20%, 17.5% 40%, 17.5% 100%,
+    21% 100%, 21% 40%, 24.5% 20%, 28% 40%, 28% 100%,
+    31.5% 100%, 31.5% 40%, 35% 20%, 38.5% 40%, 38.5% 100%,
+    42% 100%, 42% 40%, 45.5% 20%, 49% 40%, 49% 100%,
+    52.5% 100%, 52.5% 40%, 56% 20%, 59.5% 40%, 59.5% 100%,
+    63% 100%, 63% 40%, 66.5% 20%, 70% 40%, 70% 100%,
+    73.5% 100%, 73.5% 40%, 77% 20%, 80.5% 40%, 80.5% 100%,
+    84% 100%, 84% 40%, 87.5% 20%, 91% 40%, 91% 100%,
+    94.5% 100%, 94.5% 40%, 98% 20%, 100% 40%, 100% 100%
+  );
+  opacity: 0.9;
+}
+.picket-divider.rail::before {
+  content: '';
+}
+
+/* ---------- hero ---------- */
+.hero {
+  background: var(--iron);
+  color: var(--limestone-hi);
+  padding: 84px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero .wrap { position: relative; z-index: 2; padding-bottom: 56px; }
+.hero .eyebrow { color: var(--gold); }
+.hero h1 { color: var(--limestone-hi); margin: 10px 0 18px; max-width: 11ch; }
+.hero p.lede {
+  font-size: 1.15rem;
+  max-width: 46ch;
+  color: rgba(246,240,225,0.82);
+  margin-bottom: 32px;
+}
+
+/* ---------- city picker (mile-marker styled chips) ---------- */
+.city-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.city-chip {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--limestone-hi);
+  background: var(--iron-soft);
+  border: 1px solid rgba(246,240,225,0.25);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+.city-chip::before {
+  content: '\2726';
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+.city-chip:hover {
+  background: var(--clay);
+  border-color: var(--clay);
+  transform: translateY(-1px);
+}
+
+/* ---------- sections ---------- */
+section { padding: 64px 0; }
+.section-head { margin-bottom: 36px; max-width: 60ch; }
+.section-head .eyebrow { display: block; margin-bottom: 10px; }
+
+.bg-limestone { background: var(--limestone); }
+.bg-iron { background: var(--iron); color: var(--limestone-hi); }
+.bg-iron h2, .bg-iron h3 { color: var(--limestone-hi); }
+
+/* ---------- how it works ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.step {
+  border-left: 3px solid var(--clay);
+  padding-left: 18px;
+}
+.step .num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--clay);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.step h3 { margin: 6px 0 8px; }
+.step p { font-size: 0.95rem; color: var(--iron-soft); margin: 0; }
+
+/* ---------- business cards ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.biz-card {
+  background: var(--limestone-hi);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.biz-card:hover { box-shadow: 0 8px 24px rgba(42,38,34,0.12); transform: translateY(-2px); }
+.biz-card .badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--prairie);
+  background: rgba(78,107,114,0.1);
+  border-radius: var(--radius);
+  padding: 3px 8px;
+  margin-bottom: 10px;
+}
+.biz-card h3 { margin: 0 0 6px; text-transform: none; font-family: var(--body); font-weight: 800; font-size: 1.15rem; letter-spacing: 0; }
+.biz-card .meta { font-size: 0.85rem; color: var(--iron-soft); margin-bottom: 12px; }
+.biz-card .services { font-size: 0.82rem; color: var(--iron-soft); margin-bottom: 16px; }
+.biz-card .card-actions { display: flex; gap: 10px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-primary { background: var(--clay); color: var(--limestone-hi); }
+.btn-primary:hover { background: var(--clay-dark); }
+.btn-outline { background: transparent; color: var(--iron); border-color: var(--iron); }
+.btn-outline:hover { background: var(--iron); color: var(--limestone-hi); }
+.btn-outline.on-dark { color: var(--limestone-hi); border-color: rgba(246,240,225,0.4); }
+.btn-outline.on-dark:hover { background: var(--limestone-hi); color: var(--iron); }
+.btn-block { width: 100%; }
+
+/* ---------- lead form ---------- */
+.lead-form {
+  background: var(--limestone-hi);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.lead-form .field { margin-bottom: 16px; }
+.lead-form label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--iron-soft);
+  margin-bottom: 6px;
+}
+.lead-form input, .lead-form select, .lead-form textarea {
+  width: 100%;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--iron);
+}
+.lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus {
+  outline: 2px solid var(--clay);
+  outline-offset: 1px;
+}
+.form-row { display: flex; gap: 14px; }
+.form-row .field { flex: 1; }
+
+.confirm-box {
+  display: none;
+  background: rgba(78,107,114,0.1);
+  border: 1px solid var(--prairie);
+  border-radius: var(--radius);
+  padding: 20px;
+  font-size: 0.92rem;
+}
+.confirm-box strong { display: block; font-family: var(--display); font-size: 1.1rem; letter-spacing: 0.02em; margin-bottom: 4px; text-transform: uppercase; }
+
+/* ---------- FAQ ---------- */
+.faq-item { border-bottom: 1px solid var(--line); padding: 20px 0; }
+.faq-item h3 { text-transform: none; font-family: var(--body); font-weight: 700; font-size: 1.02rem; letter-spacing: 0; margin: 0 0 8px; }
+.faq-item p { font-size: 0.92rem; color: var(--iron-soft); margin: 0; }
+
+/* ---------- footer ---------- */
+.site-footer {
+  background: var(--iron);
+  color: rgba(246,240,225,0.6);
+  padding: 40px 0 32px;
+  font-size: 0.85rem;
+}
+.site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.site-footer a:hover { color: var(--gold); }
+
+/* ---------- profile page specifics ---------- */
+.profile-hero {
+  background: var(--iron);
+  color: var(--limestone-hi);
+  padding: 56px 0;
+}
+.profile-hero .badge-row { display: flex; gap: 8px; margin-bottom: 14px; }
+.profile-hero .badge-row .badge {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  border: 1px solid rgba(199,154,59,0.5);
+  border-radius: var(--radius);
+  padding: 4px 10px;
+}
+.profile-hero h1 { color: var(--limestone-hi); font-size: clamp(2rem, 5vw, 3.2rem); }
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.info-list { list-style: none; margin: 0; padding: 0; }
+.info-list li { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+.info-list .k { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--prairie); min-width: 120px; }
+
+.breadcrumb { font-family: var(--mono); font-size: 0.75rem; color: rgba(246,240,225,0.6); margin-bottom: 20px; }
+.breadcrumb a:hover { color: var(--gold); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 780px) {
+  .steps { grid-template-columns: 1fr; gap: 32px; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .form-row { flex-direction: column; gap: 0; }
+  .site-footer .wrap { flex-direction: column; }
+  .logo { font-size: 1.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

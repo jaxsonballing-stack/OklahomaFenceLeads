@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ironwood Fence Co. — Piedmont &amp; NW OKC | Oklahoma Fence Leads</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">OKLAHOMA <span>FENCE LEADS</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Get a quote</a>
+    </nav>
+  </div>
+</header>
+
+<section class="profile-hero">
+  <div class="wrap">
+    <div class="badge-row">
+      <span class="badge">Wood</span>
+      <span class="badge">Vinyl</span>
+      <span class="badge">Gate Repair</span>
+    </div>
+    <h1>Ironwood Fence Co.</h1>
+    <p class="lede">Family-run fence crew building and repairing cedar, split-rail, and vinyl fencing across Piedmont, Yukon, and northwest OKC.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="profile-grid">
+
+      <div>
+        <h2 id="about" style="font-size: 1.5rem;">About</h2>
+        <p>Ironwood Fence Co. has installed and repaired residential fencing across Canadian County and northwest Oklahoma City. The crew specializes in cedar privacy fencing, split-rail for larger lots, and vinyl fencing for low-maintenance yards, along with gate repair for existing fence lines.</p>
+
+        <h2 id="services" style="font-size: 1.5rem; margin-top: 40px;">Services</h2>
+        <ul class="info-list">
+          <li><span class="k">Fence types</span><span>Cedar privacy, split-rail, vinyl, gate repair</span></li>
+          <li><span class="k">Service area</span><span>Piedmont, Yukon, NW Oklahoma City</span></li>
+          <li><span class="k">Typical job</span><span>Residential privacy &amp; perimeter fencing</span></li>
+          <li><span class="k">Free estimates</span><span>Yes</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="lead-form" id="contact">
+          <h3 style="margin-top:0;">Contact Ironwood Fence Co.</h3>
+          <p style="font-size: 0.88rem; color: var(--iron-soft);">Send a request and they'll follow up directly — usually within a day or two.</p>
+          <form id="contactForm" action="https://formspree.io/f/xdaqpaak" method="POST">
+            <input type="hidden" name="_subject" value="New lead — Ironwood Fence Co.">
+            <input type="hidden" name="source_page" value="business-ironwood-fence">
+            <input type="hidden" name="business" value="Ironwood Fence Co.">
+            <div class="field">
+              <label for="cname">Name</label>
+              <input type="text" id="cname" name="name" required>
+            </div>
+            <div class="field">
+              <label for="cphone">Phone</label>
+              <input type="tel" id="cphone" name="phone" required>
+            </div>
+            <div class="field">
+              <label for="cnotes">What do you need done?</label>
+              <textarea id="cnotes" name="notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send request</button>
+            <p class="form-error" id="formError" style="display:none; color: var(--clay); font-size: 0.85rem; margin: 12px 0 0;">
+              Something went wrong sending that — please try again.
+            </p>
+          </form>
+          <div class="confirm-box" id="confirmBox">
+            <strong>Sent.</strong>
+            Ironwood Fence Co. will reach out directly.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>Ironwood Fence Co. — Piedmont, Yukon &amp; NW Oklahoma City.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
+  const errorMsg = document.getElementById('formError');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  errorMsg.style.display = 'none';
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+    .then(response => {
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('confirmBox').style.display = 'block';
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(() => {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send request';
+    });
+});
+</script>
+
+</body>
+</html>
